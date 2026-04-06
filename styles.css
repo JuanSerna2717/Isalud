@@ -211,12 +211,16 @@ input, select, textarea { font: inherit; }
    SECTION: HERO (Sticky Form Layout)
    ═══════════════════════════════════════════ */
 .section-hero {
-  background: linear-gradient(135deg, #4f6599 0%, #e8edf5 50%, #1a3574 100%);
+  background: var(--gray-900);
   padding-top: var(--gap-32);
   padding-bottom: var(--gap-64);
 }
-.section-hero .headline-xs,
-.section-hero .color-primary { color: var(--blue-200); }
+.section-hero .headline-xs { color: var(--blue-100); }
+.section-hero .color-primary { color: var(--blue-100); }
+.section-hero .headline-l,
+.section-hero .text-xl,
+.section-hero .validator-item,
+.section-hero .social-proof-label { color: #ffffff; }
 
 .hero-sticky-grid {
   display: grid;
@@ -822,7 +826,7 @@ input, select, textarea { font: inherit; }
    ═══════════════════════════════════════════ */
 .section-cta {
   padding: var(--gap-96) 0;
-  background: linear-gradient(135deg, #0F172A 0%, #e8edf5 50%, #ffffff 100%);
+  background: var(--gray-900);
 }
 .cta-container {
   max-width: 700px;
@@ -831,9 +835,11 @@ input, select, textarea { font: inherit; }
 }
 .cta-container .headline-l {
   margin-bottom: var(--gap-16);
+  color: #ffffff;
 }
 .cta-container .text-l {
   margin-bottom: var(--gap-32);
+  color: var(--gray-400);
 }
 .cta-buttons {
   display: flex;
