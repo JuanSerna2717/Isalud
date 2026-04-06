@@ -211,7 +211,7 @@ input, select, textarea { font: inherit; }
    SECTION: HERO (Sticky Form Layout)
    ═══════════════════════════════════════════ */
 .section-hero {
-  background: linear-gradient(180deg, var(--bg-blue-soft) 0%, var(--white) 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #e0f7fb 60%, #b2ecf5 100%);
   padding-top: var(--gap-32);
   padding-bottom: var(--gap-64);
 }
@@ -405,6 +405,15 @@ input, select, textarea { font: inherit; }
   }
   .hero-form-card { max-width: 480px; margin: 0 auto; }
   .form-row { grid-template-columns: 1fr; }
+}
+
+.hero-logo {
+  margin-bottom: 16px;
+}
+.hero-logo img {
+  height: 48px;
+  width: auto;
+  display: block;
 }
 
 
@@ -811,6 +820,7 @@ input, select, textarea { font: inherit; }
    ═══════════════════════════════════════════ */
 .section-cta {
   padding: var(--gap-96) 0;
+  background: linear-gradient(135deg, #b2ecf5 0%, #e0f7fb 50%, #ffffff 100%);
 }
 .cta-container {
   max-width: 700px;
@@ -835,8 +845,8 @@ input, select, textarea { font: inherit; }
    FOOTER
    ═══════════════════════════════════════════ */
 .site-footer {
-  background: var(--gray-900);
-  color: var(--gray-400);
+  background: linear-gradient(135deg, #e0f7fb 0%, #f5fdfe 100%);
+  color: #2d6a7a;
   padding: var(--gap-48) 0 var(--gap-32);
 }
 
@@ -845,14 +855,13 @@ input, select, textarea { font: inherit; }
   align-items: center;
   justify-content: space-between;
   padding-bottom: var(--gap-32);
-  border-bottom: 1px solid var(--gray-800);
+  border-bottom: 1px solid #b2e8f3;
   margin-bottom: var(--gap-24);
   flex-wrap: wrap;
   gap: var(--gap-16);
 }
 .footer-logo img {
   height: 36px;
-  filter: brightness(0) invert(1);
 }
 
 .footer-links {
@@ -861,11 +870,11 @@ input, select, textarea { font: inherit; }
   flex-wrap: wrap;
 }
 .footer-links a {
-  color: var(--gray-400);
+  color: #2d6a7a;
   font-size: var(--text-s);
   transition: color var(--transition);
 }
-.footer-links a:hover { color: var(--white); }
+.footer-links a:hover { color: #0a3d4a; }
 
 .footer-bottom {
   display: flex;
@@ -876,7 +885,7 @@ input, select, textarea { font: inherit; }
 }
 .footer-bottom p {
   font-size: var(--text-xs);
-  color: var(--gray-500);
+  color: #4a8fa0;
 }
 
 
@@ -961,11 +970,15 @@ input, select, textarea { font: inherit; }
 [data-theme="dark"] .section-benefits { background: #060D18; }
 [data-theme="dark"] .section-ticker { background: #0F172A; }
 [data-theme="dark"] .ticker-item { background: #111827; border-color: #1E293B; }
-[data-theme="dark"] .site-footer { background: #030712; }
+[data-theme="dark"] .site-footer { background: linear-gradient(135deg, #051a20 0%, #0a2e38 100%); color: #7ecfdf; }
+[data-theme="dark"] .footer-links a { color: #7ecfdf; }
+[data-theme="dark"] .footer-links a:hover { color: #b2ecf5; }
+[data-theme="dark"] .footer-bottom p { color: #4a8fa0; }
+[data-theme="dark"] .footer-top { border-bottom-color: #0d3d4d; }
+[data-theme="dark"] .section-cta { background: linear-gradient(135deg, #051a20 0%, #0B1830 100%); }
 [data-theme="dark"] .theme-toggle { background: #1E293B; border-color: #334155; color: #FBBF24; }
 [data-theme="dark"] .theme-toggle:hover { background: #FBBF24; color: #0B1220; border-color: #FBBF24; }
 [data-theme="dark"] .whatsapp-float { box-shadow: 0 4px 16px rgba(37,211,102,0.2); }
 [data-theme="dark"] .price-card { background: #111827; border-color: #1E293B; }
 [data-theme="dark"] .price-card.featured { border-color: var(--blue-100); }
 [data-theme="dark"] .faq-item { background: #111827; border-color: #1E293B; }
-[data-theme="dark"] .footer-logo img { filter: brightness(0) invert(1); }

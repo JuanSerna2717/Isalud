@@ -3,6 +3,33 @@
    ═══════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
 
+  /* ── Form position on mobile ─────────── */
+  const formCol = document.querySelector('.hero-form-col');
+  const heroGrid = document.querySelector('.hero-sticky-grid');
+  const footer = document.querySelector('.site-footer');
+  let formMoved = false;
+
+  function handleFormPosition() {
+    if (window.innerWidth <= 768) {
+      if (!formMoved) {
+        footer.parentNode.insertBefore(formCol, footer);
+        formCol.style.padding = '40px 20px';
+        formMoved = true;
+      }
+    } else {
+      if (formMoved) {
+        heroGrid.appendChild(formCol);
+        formCol.style.padding = '';
+        formMoved = false;
+      }
+    }
+  }
+
+  handleFormPosition();
+  window.addEventListener('resize', handleFormPosition);
+
+
+
   /* ── Smooth Scroll ───────────────────── */
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', e => {

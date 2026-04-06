@@ -1,0 +1,758 @@
+{
+  "info": {
+    "_postman_id": "66f5b633-af5f-4b25-8ab3-83ff933cecc0",
+    "name": "API-INTEGRACION-RECEPCION",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "5478995"
+  },
+  "item": [
+    {
+      "name": "Recepción de Documentos",
+      "item": [
+        {
+          "name": "EnviarXML con Metadata",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Token-Empresa",
+                "value": "{{tokenEnterprise}}",
+                "type": "text"
+              },
+              {
+                "key": "X-Token-Password",
+                "value": "{{tokenPassword}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"archivo\": \"{{archivo}}\",\r\n  \"metadata\": {\r\n    \"metadata\": [\r\n      {\r\n        \"code\": \"5\",\r\n        \"value\": \"PED123\",\r\n        \"internal1\": null,\r\n        \"internal2\": null\r\n      },\r\n      {\r\n        \"code\": \"10\",\r\n        \"value\": \"ORDC887\",\r\n        \"internal1\": null,\r\n        \"internal2\": null\r\n      }\r\n    ]\r\n  }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/api/recepcion/EnviarXML",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "recepcion",
+                "EnviarXML"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EnviarXML sin Metadata",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Token-Empresa",
+                "value": "{{tokenEnterprise}}",
+                "type": "text"
+              },
+              {
+                "key": "X-Token-Password",
+                "value": "{{tokenPassword}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"archivo\": \"{{archivo}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/api/recepcion/EnviarXML",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "recepcion",
+                "EnviarXML"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EnviarRepGrafica",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Token-Empresa",
+                "value": "{{tokenEnterprise}}",
+                "type": "text"
+              },
+              {
+                "key": "X-Token-Password",
+                "value": "{{tokenPassword}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"numeroDocumento\": \"{{numeroDocumento}}\",\r\n  \"identificadorEmisor\": \"{{nitEmisor}}\",\r\n  \"archivo\": \"{{archivopdf}}\",\r\n  \"nombre\": \"nombreArchivo\",\r\n  \"visible\": \"1\", // valor fijo\r\n  \"tipoIdentificacionemisor\": \"{{tipoDocEmisor}}\",\r\n  \"TipoDocumento\": \"{{tipoDocumento}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/api/recepcion/EnviarRepGrafica",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "recepcion",
+                "EnviarRepGrafica"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Gestión de Documentos",
+      "item": [
+        {
+          "name": "EstadoDocumento",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Token-Empresa",
+                "value": "{{tokenEnterprise}}",
+                "type": "text"
+              },
+              {
+                "key": "X-Token-Password",
+                "value": "{{tokenPassword}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{URL}}/api/recepcion/EstadoDocumento/{{tipoDocumento}}/{{numeroDocumento}}?identificadorEmisor={{nitEmisor}}&tipoIdentificacionemisor={{tipoDocEmisor}}",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "recepcion",
+                "EstadoDocumento",
+                "{{tipoDocumento}}",
+                "{{numeroDocumento}}"
+              ],
+              "query": [
+                {
+                  "key": "identificadorEmisor",
+                  "value": "{{nitEmisor}}"
+                },
+                {
+                  "key": "tipoIdentificacionemisor",
+                  "value": "{{tipoDocEmisor}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ReporteStatus",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Token-Empresa",
+                "value": "{{tokenEnterprise}}",
+                "type": "text"
+              },
+              {
+                "key": "X-Token-Password",
+                "value": "{{tokenPassword}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{URL}}/api/recepcion/ReporteStatus?codigoEstatus=01",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "recepcion",
+                "ReporteStatus"
+              ],
+              "query": [
+                {
+                  "key": "codigoEstatus",
+                  "value": "01"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CambioEstatus",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "X-Token-Empresa",
+                "value": "{{tokenEnterprise}}",
+                "type": "text"
+              },
+              {
+                "key": "X-Token-Password",
+                "value": "{{tokenPassword}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"numeroDocumento\": \"{{numeroDocumento}}\",\r\n  \"identificadorEmisor\": \"{{nitEmisor}}\",\r\n  \"tipoIdentificacionemisor\": \"{{tipoDocEmisor}}\",\r\n  \"codigoEstatus\": \"02\",\r\n  //\"codigoRechazo\": \"02\", //Solo para el reclamo\r\n  \"EjecutadoPor\": { \r\n    \"Nombre\": \"Pedro\",\r\n    \"Apellido\": \"Perez\",\r\n    \"Identificacion\": {\r\n      \"NumeroIdentificacion\": \"id de quien genera el evento\",\r\n      \"TipoIdentificacion\": \"31\",\r\n      \"Dv\": \"6\"\r\n    }\r\n   //\"Cargo\": \"\",\r\n    //\"Departamento\": \"\"\r\n  },\r\n  \"TipoDocumento\": \"{{tipoDocumento}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/api/recepcion/CambioEstatus",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "recepcion",
+                "CambioEstatus"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EliminarRepGrafica",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-Token-Empresa",
+                "value": "{{tokenEnterprise}}",
+                "type": "text"
+              },
+              {
+                "key": "X-Token-Password",
+                "value": "{{tokenPassword}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{URL}}/api/recepcion/EliminarRepGrafica/{{tipoDocumento}}/{{numeroDocumento}}?identificadorEmisor={{nitEmisor}}&tipoIdentificacionemisor={{tipoDocEmisor}}",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "recepcion",
+                "EliminarRepGrafica",
+                "{{tipoDocumento}}",
+                "{{numeroDocumento}}"
+              ],
+              "query": [
+                {
+                  "key": "identificadorEmisor",
+                  "value": "{{nitEmisor}}"
+                },
+                {
+                  "key": "tipoIdentificacionemisor",
+                  "value": "{{tipoDocEmisor}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Manejo de Anexos",
+      "item": [
+        {
+          "name": "EnviarAnexo",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Token-Empresa",
+                "value": "{{tokenEnterprise}}",
+                "type": "text"
+              },
+              {
+                "key": "X-Token-Password",
+                "value": "{{tokenPassword}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"numeroDocumento\": \"{{numeroDocumento}}\",\r\n  \"identificadorEmisor\": \"{{nitEmisor}}\",\r\n  \"archivo\": \"{{archivoAnexo}}\",\r\n  \"nombre\": \"adjunto1\",\r\n  \"extension\": \"pdf\",\r\n  \"visible\": \"1\",\r\n  \"tipoIdentificacionemisor\": \"{{tipoDocEmisor}}\",\r\n  \"TipoDocumento\": \"{{tipoDocumento}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/api/recepcion/EnviarAnexo",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "recepcion",
+                "EnviarAnexo"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DescargarAnexo",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Token-Empresa",
+                "value": "{{tokenEnterprise}}",
+                "type": "text"
+              },
+              {
+                "key": "X-Token-Password",
+                "value": "{{tokenPassword}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{URL}}/api/recepcion/DescargarAnexo/{{tipoDocumento}}/{{numeroDocumento}}?identificadorEmisor=nitEmisor&identificadorInternoAnexo=vieneDeListaAnexo&tipoIdentificacionemisor=TipoIdEmisor",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "recepcion",
+                "DescargarAnexo",
+                "{{tipoDocumento}}",
+                "{{numeroDocumento}}"
+              ],
+              "query": [
+                {
+                  "key": "identificadorEmisor",
+                  "value": "nitEmisor"
+                },
+                {
+                  "key": "identificadorInternoAnexo",
+                  "value": "vieneDeListaAnexo"
+                },
+                {
+                  "key": "tipoIdentificacionemisor",
+                  "value": "TipoIdEmisor"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ListaAnexo",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Token-Empresa",
+                "value": "{{tokenEnterprise}}",
+                "type": "text"
+              },
+              {
+                "key": "X-Token-Password",
+                "value": "{{tokenPassword}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{URL}}/api/recepcion/ListaAnexo/{{tipoDocumento}}/{{numeroDocumento}}?identificadorEmisor={{nitEmisor}}&tipoIdentificacionemisor={{tipoDocEmisor}}",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "recepcion",
+                "ListaAnexo",
+                "{{tipoDocumento}}",
+                "{{numeroDocumento}}"
+              ],
+              "query": [
+                {
+                  "key": "identificadorEmisor",
+                  "value": "{{nitEmisor}}"
+                },
+                {
+                  "key": "tipoIdentificacionemisor",
+                  "value": "{{tipoDocEmisor}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EliminarAnexo",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-Token-Empresa",
+                "value": "{{tokenEnterprise}}",
+                "type": "text"
+              },
+              {
+                "key": "X-Token-Password",
+                "value": "{{tokenPassword}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{URL}}/api/recepcion/EliminarAnexo/{{tipoDocumento}}/{{numeroDocumento}}?identificadorEmisor=NIT&identificadorInternoAnexo=vieneDeListaAnexo&tipoIdentificacionemisor=TipoIdEmisor",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "recepcion",
+                "EliminarAnexo",
+                "{{tipoDocumento}}",
+                "{{numeroDocumento}}"
+              ],
+              "query": [
+                {
+                  "key": "identificadorEmisor",
+                  "value": "NIT"
+                },
+                {
+                  "key": "identificadorInternoAnexo",
+                  "value": "vieneDeListaAnexo"
+                },
+                {
+                  "key": "tipoIdentificacionemisor",
+                  "value": "TipoIdEmisor"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Manejo Metadata",
+      "item": [
+        {
+          "name": "ConsultaDocumentoMetadata",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Token-Empresa",
+                "value": "{{tokenEnterprise}}",
+                "type": "text"
+              },
+              {
+                "key": "X-Token-Password",
+                "value": "{{tokenPassword}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{URL}}/api/recepcion/ConsultaDocumentoMetadata/{{tipoDocumento}}/{{numeroDocumento}}?identificadorEmisor=900390126&tipoIdentificacionemisor=31",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "recepcion",
+                "ConsultaDocumentoMetadata",
+                "{{tipoDocumento}}",
+                "{{numeroDocumento}}"
+              ],
+              "query": [
+                {
+                  "key": "identificadorEmisor",
+                  "value": "900390126"
+                },
+                {
+                  "key": "tipoIdentificacionemisor",
+                  "value": "31"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EnviarMetadata",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Token-Empresa",
+                "value": "{{tokenEnterprise}}",
+                "type": "text"
+              },
+              {
+                "key": "X-Token-Password",
+                "value": "{{tokenPassword}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"numeroDocumento\": \"{{numeroDocumento}}\",\r\n  \"identificadorEmisor\": \"{{nitEmisor}}\",\r\n  \"metadata\": {\r\n    \"metadata\": [\r\n      {\r\n        \"code\": \"1\",\r\n        \"value\": \"SucursalSUR\",\r\n        \"internal1\": null,\r\n        \"internal2\": null\r\n      },\r\n      {\r\n        \"code\": \"3\",\r\n        \"value\": \"Col\",\r\n        \"internal1\": null,\r\n        \"internal2\": null\r\n      },\r\n      {\r\n        \"code\": \"6\",\r\n        \"value\": \"0099\",\r\n        \"internal1\": null,\r\n        \"internal2\": null\r\n      }\r\n    ]\r\n  },\r\n  \"tipoIdentificacionemisor\": \"{{tipoDocEmisor}}\",\r\n  \"TipoDocumento\": \"{{tipoDocumento}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{URL}}/api/recepcion/EnviarMetadata",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "recepcion",
+                "EnviarMetadata"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Descargas",
+      "item": [
+        {
+          "name": "DescargarEventoXML",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Token-Empresa",
+                "value": "{{tokenEnterprise}}",
+                "type": "text"
+              },
+              {
+                "key": "X-Token-Password",
+                "value": "{{tokenPassword}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{URL}}/api/recepcion/DescargarEventoXML/{{tipoDocumento}}/{{numeroDocumento}}?identificadorEmisor=900390126&tipoEvento=00&tipoIdentificacionemisor=31&tipoDescarga=2",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "recepcion",
+                "DescargarEventoXML",
+                "{{tipoDocumento}}",
+                "{{numeroDocumento}}"
+              ],
+              "query": [
+                {
+                  "key": "identificadorEmisor",
+                  "value": "900390126"
+                },
+                {
+                  "key": "tipoEvento",
+                  "value": "00"
+                },
+                {
+                  "key": "tipoIdentificacionemisor",
+                  "value": "31"
+                },
+                {
+                  "key": "tipoDescarga",
+                  "value": "2"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DescargarRepGrafica",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Token-Empresa",
+                "value": "{{tokenEnterprise}}",
+                "type": "text"
+              },
+              {
+                "key": "X-Token-Password",
+                "value": "{{tokenPassword}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{URL}}/api/recepcion/DescargarRepGrafica/{{tipoDocumento}}/{{numeroDocumento}}/01?identificadorEmisor=123456789&tipoIdentificacionemisor=31",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "recepcion",
+                "DescargarRepGrafica",
+                "{{tipoDocumento}}",
+                "{{numeroDocumento}}",
+                "01"
+              ],
+              "query": [
+                {
+                  "key": "identificadorEmisor",
+                  "value": "123456789"
+                },
+                {
+                  "key": "tipoIdentificacionemisor",
+                  "value": "31"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DescargarXML",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Token-Empresa",
+                "value": "{{tokenEnterprise}}",
+                "type": "text"
+              },
+              {
+                "key": "X-Token-Password",
+                "value": "{{tokenPassword}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{URL}}/api/recepcion/DescargarXML/{{tipoDocumento}}/{{numeroDocumento}}?identificadorEmisor=123456789&tipoIdentificacionemisor=31",
+              "host": [
+                "{{URL}}"
+              ],
+              "path": [
+                "api",
+                "recepcion",
+                "DescargarXML",
+                "{{tipoDocumento}}",
+                "{{numeroDocumento}}"
+              ],
+              "query": [
+                {
+                  "key": "identificadorEmisor",
+                  "value": "123456789"
+                },
+                {
+                  "key": "tipoIdentificacionemisor",
+                  "value": "31"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "URL",
+      "value": ""
+    },
+    {
+      "key": "tokenEnterprise",
+      "value": ""
+    },
+    {
+      "key": "tokenPassword",
+      "value": ""
+    },
+    {
+      "key": "tipoDocumento",
+      "value": ""
+    },
+    {
+      "key": "numeroDocumento",
+      "value": ""
+    },
+    {
+      "key": "archivo",
+      "value": ""
+    },
+    {
+      "key": "nitEmisor",
+      "value": ""
+    },
+    {
+      "key": "tipoDocEmisor",
+      "value": ""
+    }
+  ]
+}
