@@ -484,7 +484,7 @@ input, select, textarea { font: inherit; }
 
 .feature-2-col {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 3fr 2fr;
   gap: var(--gap-48);
   align-items: center;
 }
@@ -502,9 +502,8 @@ input, select, textarea { font: inherit; }
 }
 .feature-image img {
   width: 100%;
-  height: 360px;
-  object-fit: cover;
-  object-position: center;
+  height: auto;
+  object-fit: contain;
   display: block;
 }
 
@@ -630,15 +629,15 @@ input, select, textarea { font: inherit; }
   padding: var(--gap-24);
 }
 .benefit-icon {
-  width: 48px;
-  height: 48px;
+  width: 72px;
+  height: 72px;
   margin: 0 auto var(--gap-16);
   color: var(--blue-100);
 }
-.benefit-icon svg { width: 48px; height: 48px; }
+.benefit-icon svg { width: 72px; height: 72px; }
 .benefit-item .text-xl {
   color: rgba(255,255,255,0.85);
-  font-size: var(--text-base);
+  font-size: var(--text-xl);
 }
 
 @media (max-width: 768px) {
