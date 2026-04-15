@@ -2,12 +2,13 @@
    iSalud Landing — Interactivity
    ═══════════════════════════════════════════ */
 
-/* ── Supabase config ─────────────────────── */
 const SUPABASE_URL = 'https://nbzcpoduaulszzovjzgv.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_p7KQ_0Zh0ylFV6pAy00JDw_jwUKz887';
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  /* ── Supabase config ─────────────────────── */
+  const supabase = window.supabase?.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
   /* ── Form position on mobile ─────────── */
   const formCol = document.querySelector('.hero-form-col');
