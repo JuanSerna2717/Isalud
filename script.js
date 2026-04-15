@@ -1,6 +1,12 @@
 /* ═══════════════════════════════════════════
    iSalud Landing — Interactivity
    ═══════════════════════════════════════════ */
+
+/* ── Supabase config ─────────────────────── */
+const SUPABASE_URL = 'https://nbzcpoduaulszzovjzgv.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_p7KQ_0Zh0ylFV6pAy00JDw_jwUKz887';
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Form position on mobile ─────────── */
@@ -81,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Form Handling ───────────────────── */
   document.querySelectorAll('.lead-form').forEach(form => {
-    form.addEventListener('submit', e => {
+    form.addEventListener('submit', async e => {
       e.preventDefault();
       const data = Object.fromEntries(new FormData(form).entries());
       let valid = true;
@@ -90,7 +96,22 @@ document.addEventListener('DOMContentLoaded', () => {
         else { input.style.borderColor = ''; }
       });
       if (!valid) return;
-      console.log('📩 Lead capturado:', data);
+
+      const submitBtn = form.querySelector('[type="submit"]');
+      if (submitBtn) submitBtn.disabled = true;
+
+      const { error } = await supabase.from('leads').insert({
+        nombre: data.nombre,
+        email: data.email,
+        telefono: data.telefono,
+      });
+
+      if (error) {
+        console.error('Error guardando lead:', error.message);
+        if (submitBtn) submitBtn.disabled = false;
+        return;
+      }
+
       const formFields = form.querySelector('.form-fields');
       const success = form.querySelector('.form-success');
       if (formFields && success) { formFields.style.display = 'none'; success.classList.add('show'); }
